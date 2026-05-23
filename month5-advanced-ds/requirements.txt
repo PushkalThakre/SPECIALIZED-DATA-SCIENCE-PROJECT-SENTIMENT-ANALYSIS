@@ -1,0 +1,36 @@
+# Core Data Science
+pandas
+numpy
+scikit-learn
+scipy
+
+# Deep Learning (Python 3.12 compatible)
+tensorflow==2.19.1
+
+# Time Series
+statsmodels
+pmdarima
+
+# API & Serving
+fastapi
+uvicorn[standard]
+pydantic
+
+# Visualization
+matplotlib
+seaborn
+plotly
+
+# Utilities
+joblib
+python-dotenv
+loguru
+
+# Testing
+pytest
+pytest-cov
+httpx
+
+# Monitoring
+prometheus-client
+

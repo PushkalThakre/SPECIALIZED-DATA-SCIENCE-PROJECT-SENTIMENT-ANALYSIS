@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+  # ── Main API ────────────────────────────────────────────────
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: ds_project_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./monitoring:/app/monitoring
+    environment:
+      - PYTHONPATH=/app
+      - LOG_LEVEL=INFO
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - ds_network
+
+  # ── Prometheus monitoring ────────────────────────────────────
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: ds_prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - ds_network
+    depends_on:
+      - api
+
+networks:
+  ds_network:
+    driver: bridge
+
+volumes:
+  model_data:

@@ -1,0 +1,10 @@
+{
+  "dashboard": "Advanced DS Project Monitoring",
+  "panels": [
+    {"title": "Total Requests/min", "metric": "total_requests", "type": "counter"},
+    {"title": "Avg Latency (ms)", "metric": "avg_latency_ms", "type": "gauge"},
+    {"title": "Error Rate (%)", "metric": "error_rate_pct", "type": "gauge"},
+    {"title": "Churn Predictions", "metric": "predictions_served.churn", "type": "counter"},
+    {"title": "Sales Forecasts", "metric": "predictions_served.sales", "type": "counter"}
+  ]
+}
